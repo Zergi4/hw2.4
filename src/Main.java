@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-            checkLogin("bb*");
+            checkLogin("bb");
         } catch (WrongLoginException e) {
             System.out.println(e.getMessage());
         }
@@ -46,12 +46,12 @@ public class Main {
             throw new WrongPasswordException("Ошибка! Превышена длина пароля");
         }
         //проверка на корректность пароля
-        char[] loginToChar = password.toCharArray();
+        char[] passwordToChar = password.toCharArray();
         boolean trueCheck = true;
-        for (int i = 0; i < loginToChar.length; i++) {
+        for (int i = 0; i < passwordToChar.length; i++) {
             if (trueCheck) {
                 for (int j = 0; j < allowedChars.length; j++) {
-                    if (loginToChar[i] == allowedChars[j]) {
+                    if (passwordToChar[i] == allowedChars[j]) {
                         trueCheck = true;
                         break;
                     } else trueCheck = false;
