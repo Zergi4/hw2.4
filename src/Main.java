@@ -9,6 +9,11 @@ public class Main {
         } catch (WrongLoginException e) {
             System.out.println(e.getMessage());
         }
+        try {
+            checkPassword("bb33333333333", "bb33333333333");
+        } catch (WrongPasswordException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static void checkLogin(String login) throws WrongLoginException {
@@ -26,12 +31,38 @@ public class Main {
                         trueCheck = true;
                         break;
                     } else trueCheck = false;
-                    System.out.println(trueCheck);
                 }
             }
             if (!trueCheck) {
-                throw new WrongLoginException("Символы не корректны");
+                throw new WrongLoginException("Символы логина не корректны");
             }
+        }
+    }
+
+    //проверка пароля
+    public static void checkPassword(String password, String confirmPassword) throws WrongPasswordException {
+        // проверка на длину пароля
+        if (password.length() > 20) {
+            throw new WrongPasswordException("Ошибка! Превышена длина пароля");
+        }
+        //проверка на корректность пароля
+        char[] loginToChar = password.toCharArray();
+        boolean trueCheck = true;
+        for (int i = 0; i < loginToChar.length; i++) {
+            if (trueCheck) {
+                for (int j = 0; j < allowedChars.length; j++) {
+                    if (loginToChar[i] == allowedChars[j]) {
+                        trueCheck = true;
+                        break;
+                    } else trueCheck = false;
+                }
+            }
+            if (!trueCheck) {
+                throw new WrongPasswordException("Символы пароля не корректны");
+            }
+        }
+        if (!password.equals(confirmPassword)) {
+            throw new WrongPasswordException("Пароли не равны");
         }
     }
 
