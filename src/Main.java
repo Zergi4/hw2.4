@@ -62,7 +62,7 @@ public class Main {
             }
         }
         if (!password.equals(confirmPassword)) {
-            throw new WrongPasswordException("Пароли не равны");
+            throw new WrongPasswordException("Пароли не совпадают");
         }
     }
 
