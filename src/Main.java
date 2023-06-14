@@ -3,7 +3,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-        //   method("ksyssauksyssauksyssau", "k", "y");
+
         try {
             checkLogin("bb*");
         } catch (WrongLoginException e) {
@@ -27,7 +27,7 @@ public class Main {
         for (int i = 0; i < loginToChar.length; i++) {
             if (trueCheck) {
                 for (int j = 0; j < allowedChars.length; j++) {
-                    if (loginToChar[i] == allowedChars[j]) {
+                    if ((loginToChar[i] == allowedChars[j])) {
                         trueCheck = true;
                         break;
                     } else trueCheck = false;
